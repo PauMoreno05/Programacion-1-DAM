@@ -2,7 +2,7 @@ package Estructuras_de_Datos;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ArrayList_Ejercicio1 {
+public class ArrayList_Ejercicio1_Coches {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> coches = new ArrayList<String>();
