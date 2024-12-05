@@ -7,10 +7,8 @@ public class ArrayList_Ejercicio2_Altura {
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Double> altura = new ArrayList<Double>();
-        String alumnos = "";
         int contAlumnos = 1;
-        int Altos = 0;
-        double media = 0;
+        double media;
 
         contAlumnos = numeroAlumnos(contAlumnos);
         leerAlturas(altura, contAlumnos);
@@ -19,12 +17,7 @@ public class ArrayList_Ejercicio2_Altura {
 
         System.out.println("-----------------------");
         System.out.println("Alturas intoducidas: ");
-        System.out.print("[ ");
-        for (Double alturas  : altura){
-            System.out.print( + alturas + ", ");
-        }
-        System.out.print("]");
-        System.out.println("");
+        System.out.println(altura);
 
         media = calcularMedia(altura,contAlumnos);
         System.out.println("-----------------");
@@ -47,7 +40,7 @@ public class ArrayList_Ejercicio2_Altura {
 
     public static ArrayList<Double> leerAlturas (ArrayList<Double>altura, int contAlumnos){
         Scanner scanner = new Scanner(System.in);
-        double alturaalum = 0;
+        double alturaalum;
         for (int i = 0; i <contAlumnos; i++){
             System.out.println("Introduce la altura de alumno");
             alturaalum = scanner.nextDouble();
@@ -58,7 +51,7 @@ public class ArrayList_Ejercicio2_Altura {
 
     public static Double calcularMedia (ArrayList<Double>altura, int contAlumnos){
         double suma = 0;
-        double media = 0;
+        double media;
         for (Double i : altura){
             suma = suma + i;
         }
