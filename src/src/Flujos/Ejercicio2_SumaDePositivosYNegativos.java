@@ -6,15 +6,16 @@ public class Ejercicio2_SumaDePositivosYNegativos {
     public static void main(String[] args) {
         List<String> numeros = new ArrayList<>();
 
-        numeros.add("25");
-        numeros.add("30");
-        numeros.add("20");
+        numeros.add("100");
+        numeros.add("-50");
+        numeros.add("100");
+        numeros.add("-50");
 
         // Contamos los múltiples de 3
         long cuantosPos = numeros.stream()
                 //convertimos a Int
                 .mapToInt(s -> Integer.valueOf(s))
-                //filtramos los que sean múltiplos de 3
+                //filtramos los que sean positivos
                 .filter(number -> number >= 0)
                 //y los contamos
                 .count();
@@ -22,7 +23,7 @@ public class Ejercicio2_SumaDePositivosYNegativos {
         long cuantosNeg = numeros.stream()
                 //convertimos a Int
                 .mapToInt(s -> Integer.valueOf(s))
-                //filtramos los que sean múltiplos de 3
+                //filtramos los que sean negatiivos
                 .filter(number -> number < 0)
                 //y los contamos
                 .count();
