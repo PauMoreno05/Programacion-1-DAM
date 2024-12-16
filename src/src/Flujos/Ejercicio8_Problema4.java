@@ -21,6 +21,7 @@ public class Ejercicio8_Problema4 {
                 .filter(number -> number <= 5 && number >= 1)
                 .collect(Collectors.toList());
 
+        System.out.println("En la lista se encuentran estos numeros entre el 1 y el 5");
         System.out.println(numEj);
     }
 }
