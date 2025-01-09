@@ -18,7 +18,7 @@ public static String ejercicio2_ValorDeLaNotaEnTexto(int nota) {
 }
 
 public static void main(String argv[]) {
-    int nota = Utilidades.leerEntero("Introduce el valor de la nota entera:");
-    System.out.println(ejercicio2_ValorDeLaNotaEnTexto(nota));
+//    int nota = Utilidades.leerEntero("Introduce el valor de la nota entera:");
+//    System.out.println(ejercicio2_ValorDeLaNotaEnTexto(nota));
 }
 

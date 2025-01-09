@@ -1,3 +1,5 @@
+package Conversion;
+
 import java.util.Arrays;
 
 public class ejercicio6_NotaMedia {

@@ -1,4 +1,4 @@
-package Array;
+package Flujos;
 
 import java.util.Scanner;
 

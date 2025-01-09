@@ -1,3 +1,5 @@
+package Array;
+
 import java.util.Scanner;
 
 public class Ejercicio8_SegundoMayor {
@@ -19,11 +21,11 @@ public class Ejercicio8_SegundoMayor {
             }
         }
         for (int i : array1) System.out.print(i + " ");
-//        for (int i : array1){
-//            if (i > mayor){
-//                System.out.println("El segundo numero mayor del array es : " + i);
-//            }
-//        }
+        for (int i : array1){
+            if (i > mayor){
+                System.out.println("El segundo numero mayor del array es : " + i);
+            }
+        }
     }
 }
 

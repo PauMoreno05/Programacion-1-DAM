@@ -1,3 +1,5 @@
+package Array;
+
 public class Ejercicio2_Comunes {
     public static void main(String[] args) {
         int[] num1 = new int [10];

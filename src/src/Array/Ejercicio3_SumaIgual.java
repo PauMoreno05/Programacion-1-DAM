@@ -1,3 +1,5 @@
+package Array;
+
 import java.util.Scanner;
 
 public class Ejercicio3_SumaIgual {

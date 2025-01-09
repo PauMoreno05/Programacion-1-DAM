@@ -1,3 +1,5 @@
+package Conversion;
+
 import java.util.Arrays;
 public class ejercicio7_Salario {
     public static double Bruto(int horas, double precioHora) {
