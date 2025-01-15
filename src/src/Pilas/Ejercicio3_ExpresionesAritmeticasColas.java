@@ -1,11 +1,11 @@
 package Pilas;
 
-import java.util.PriorityQueue;
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Ejercicio3_ExpresionesAritmeticasColas {
     public static void main(String[] args) {
-        Queue<Integer> cola = new PriorityQueue<>();
+        Queue<Integer> cola = new LinkedList<>();
         String operacion = "3 5 4 + *";
         String [] operacionFin;
         operacionFin = operacion.split(" ");
