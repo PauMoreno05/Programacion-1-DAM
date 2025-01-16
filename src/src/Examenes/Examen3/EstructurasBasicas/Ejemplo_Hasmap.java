@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Ejemplo_Hasmap {
     public static void main(String[] args) {
-        Map<String, String> mapa = new HashMap<>(); // Creacion del mapa (Hasmap sirve para datos genericos)
+        Map<String, String> mapa = new HashMap<>(); // Creacion del mapa (Hasmap sirve para datos genericos) (hasmap sirve para no poner duplicados)
         mapa.put("llave1", "valor1"); // añades valores al mapa con su clave, y un valor
         mapa.put("llave2", "valor2");
         mapa.put("llave3", "valor3");
