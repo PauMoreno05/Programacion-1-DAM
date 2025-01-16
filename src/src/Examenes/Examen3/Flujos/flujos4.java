@@ -14,7 +14,7 @@ public class flujos4 {
         while (true) {
             System.out.println("Introduce un numero para aladir a la lista");
             numero = scanner.nextInt();
-            if (numero < 0){
+            if (numero == 0){
                 break;
             }
             personas.add(numero);
