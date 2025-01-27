@@ -1,7 +1,5 @@
 package POO.Ejercicio3;
 
-import java.util.Scanner;
-
 public class Ejercicio3 {
     public static void main(String[] args) {
         Cuenta cuenta1 = new Cuenta("Julian", 5632);
