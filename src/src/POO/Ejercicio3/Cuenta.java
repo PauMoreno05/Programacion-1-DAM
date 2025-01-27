@@ -33,7 +33,7 @@ public class Cuenta {
     }
     public void retirar(double cantidad){
         if (cantidad < this.cantidad){
-            this.cantidad-=;
+            this.cantidad += cantidad;
         } else if (cantidad > this.cantidad) {
             this.cantidad = 0;
         }
