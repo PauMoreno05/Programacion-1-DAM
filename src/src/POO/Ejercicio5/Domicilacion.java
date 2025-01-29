@@ -12,4 +12,9 @@ public class Domicilacion {
     public int getNum_d() {
         return num_d;
     }
+
+    @Override
+    public String toString() {
+        return getNum_d() + " " + getClass();
+    }
 }

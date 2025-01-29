@@ -10,4 +10,9 @@ public class Prestamo {
     public int getNum_p() {
         return num_p;
     }
+
+    @Override
+    public String toString() {
+        return getNum_p() + " " + getClass();
+    }
 }
