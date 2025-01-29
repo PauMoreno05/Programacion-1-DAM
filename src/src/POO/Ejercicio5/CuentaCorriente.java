@@ -39,6 +39,7 @@ public class CuentaCorriente {
         this.extras.add(extras);
     }
 
+
     @Override
     public String toString() {
         return getN_cc() + " " + getDomicilaciones() + " " + getExtras();

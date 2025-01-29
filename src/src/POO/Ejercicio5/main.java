@@ -1,44 +1,42 @@
 package POO.Ejercicio5;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class main {
     public static void main(String[] args) {
-        // Crear un banco
+
         Banco banco = new Banco(1);
 
-        // Crear una sucursal y asociarla al banco
-        Sucursal sucursal = new Sucursal(101, banco);
-        banco.addSucursal(sucursal);
 
-        // Crear una cuenta corriente y asociarla a la sucursal
-        CuentaCorriente cuentaCorriente = new CuentaCorriente(1001, sucursal);
-        sucursal.addCuentas(cuentaCorriente);
+        Sucursal sucursal1 = new Sucursal(101, banco);
+        banco.addSucursal(sucursal1);
 
-        // Crear un préstamo y asociarlo a la sucursal
-        Prestamo prestamo = new Prestamo(2001);
-        sucursal.addPrestamo(prestamo);
+        CuentaCorriente cuenta1 = new CuentaCorriente(1001, sucursal1);
+        CuentaCorriente cuenta2 = new CuentaCorriente(1002, sucursal1);
+        sucursal1.addCuentas(cuenta1);
+        sucursal1.addCuentas(cuenta2);
 
-        // Crear un cliente
-        Cliente cliente = new Cliente("12345678A");
 
-        // Asociar el préstamo al cliente
-        cliente.addPretamos(prestamo);
+        Domicilacion domiciliacion1 = new Domicilacion(2001, cuenta1);
+        Domicilacion domiciliacion2 = new Domicilacion(2002, cuenta2);
+        cuenta1.addDomiciliacion(domiciliacion1);
+        cuenta2.addDomiciliacion(domiciliacion2);
 
-        // Crear una relación ClienteMasCuentacorrienteTodoJunto
-        ClienteMasCuentacorrienteTodoJunto relacion = new ClienteMasCuentacorrienteTodoJunto("Relación1", cuentaCorriente, cliente);
+        Prestamo prestamo1 = new Prestamo(3001);
+        Prestamo prestamo2 = new Prestamo(3002);
+        sucursal1.addPrestamo(prestamo1);
+        sucursal1.addPrestamo(prestamo2);
 
-        // Asociar la relación a la cuenta corriente y al cliente
-        cuentaCorriente.addExtras(relacion);
-        cliente.addExtras(relacion);
 
-        // Mostrar la información del banco, sucursal, cuenta corriente, préstamo y cliente
-        System.out.println("Banco: " + banco);
-        System.out.println("Sucursal: " + sucursal);
-        System.out.println("Cuenta Corriente: " + cuentaCorriente);
-        System.out.println("Préstamo: " + prestamo);
-        System.out.println("Cliente: " + cliente.getDni());
-        System.out.println("Relación Cliente-Cuenta Corriente: " + relacion.getSet());
+        Cliente cliente1 = new Cliente("12345678A");
+        Cliente cliente2 = new Cliente("87654321B");
+
+        ClienteMasCuentacorrienteTodoJunto asociacion1 = new ClienteMasCuentacorrienteTodoJunto("Asociación1", cuenta1, cliente1);
+        ClienteMasCuentacorrienteTodoJunto asociacion2 = new ClienteMasCuentacorrienteTodoJunto("Asociación2", cuenta2, cliente2);
+
+        cliente1.addExtras(asociacion1);
+        cliente2.addExtras(asociacion2);
+        cuenta1.addExtras(asociacion1);
+        cuenta2.addExtras(asociacion2);
+
+
     }
 }

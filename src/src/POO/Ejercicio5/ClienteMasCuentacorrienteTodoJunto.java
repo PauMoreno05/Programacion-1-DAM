@@ -23,4 +23,8 @@ public class ClienteMasCuentacorrienteTodoJunto {
         return set;
     }
 
+    @Override
+    public String toString() {
+        return getSet() + "" + getClientes() + " " + getCuentaCorrientes();
+    }
 }

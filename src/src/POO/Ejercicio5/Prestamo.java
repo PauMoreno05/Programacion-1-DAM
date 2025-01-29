@@ -11,8 +11,9 @@ public class Prestamo {
         return num_p;
     }
 
+
     @Override
     public String toString() {
-        return getNum_p() + " " + getClass();
+        return getNum_p() + " ";
     }
 }

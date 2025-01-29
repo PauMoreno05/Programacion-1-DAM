@@ -24,6 +24,7 @@ public class Banco {
         return n_ent;
     }
 
+
     @Override
     public String toString() {
         return getN_ent() + " " + getSucursales();

@@ -30,6 +30,14 @@ public class Sucursal {
         this.prestamos.add(prestamo);
     }
 
+    public Set<CuentaCorriente> getCuentas() {
+        return cuentas;
+    }
+
+    public Set<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
     @Override
     public String toString() {
         return getBanco() + " " + getN_suc();

@@ -21,7 +21,20 @@ public class Cliente {
         return dni;
     }
 
+    public Set<ClienteMasCuentacorrienteTodoJunto> getExtras() {
+        return extras;
+    }
+
+    public Set<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
     public void addExtras(ClienteMasCuentacorrienteTodoJunto extras){
         this.extras.add(extras);
+    }
+
+    @Override
+    public String toString() {
+        return getDni() + " " + getPrestamos() + "" + getExtras();
     }
 }

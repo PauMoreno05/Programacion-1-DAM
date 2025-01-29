@@ -13,8 +13,12 @@ public class Domicilacion {
         return num_d;
     }
 
+    public CuentaCorriente getCuentaCorriente() {
+        return cuentaCorriente;
+    }
+
     @Override
     public String toString() {
-        return getNum_d() + " " + getClass();
+        return getNum_d() + " " + getCuentaCorriente();
     }
 }
