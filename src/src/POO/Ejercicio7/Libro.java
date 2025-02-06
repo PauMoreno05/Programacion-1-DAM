@@ -10,7 +10,7 @@ public class Libro {
     private Set<Ejemplar> ejemplares;
     private Editorial editorial;
 
-    public Libro(String isbn, int n_reg, Tema tema, Editorial editorial) {
+    public Libro(String isbn, Tema tema, Editorial editorial) {
         this.isbn = isbn;
         this.tema = tema;
         this.editorial = editorial;
@@ -60,6 +60,6 @@ public class Libro {
 
     @Override
     public String toString() {
-        return getIsbn()+" "+getAutores()+" "+getEditorial()+" "+getTema()+" "+getEjemplares();
+        return getIsbn();
     }
 }
