@@ -1,6 +1,6 @@
 package database.ejercicio2;
 
-import database.ejerciciodos.DatabaseConnection;
+
 
 import java.sql.*;
 
