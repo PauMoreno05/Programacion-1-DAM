@@ -127,10 +127,11 @@ public class Libros {
     public static void crearLibros(){
         Statement st = null;
         Connection con = null;
-        String sql = "CREATE TABLE Libros (ISBN TEXT, Titulo TEXT, Autor TEXT, Editorial TEXT, AñoPublicacion INTEGER, Stock INTEGER, PRIMARY KEY(ISBN))";
+        String sql = "CREATE TABLE IF NOT EXISTS Libros (ISBN TEXT, Titulo TEXT, Autor TEXT, Editorial TEXT, AñoPublicacion INTEGER, Stock INTEGER, PRIMARY KEY(ISBN))";
         try {
             con = DriverManager.getConnection(URL);
-            st = con.prepareStatement(sql);
+            st = con.createStatement();
+            st.executeUpdate(sql);
 
         }catch (SQLException ex){
             System.out.println("Error "+ ex.getMessage());
