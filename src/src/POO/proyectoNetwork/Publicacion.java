@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Publicacion {
-    private static int siguienteId = 1;
+    private int siguienteId = 1;
     private int id;
     private String autor;
     private int meGustas;

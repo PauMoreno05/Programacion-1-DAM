@@ -1,11 +1,25 @@
 package database.local;
 
-
-
 import java.sql.*;
 import java.util.Scanner;
 
 public class Libros {
+    private String isbn;
+    private String titulo;
+    private String autor;
+    private String editorial;
+    private int anoPubicacion;
+    private int stock;
+
+    public Libros(String isbn, String titulo, String autor, String editorial, int anoPubicacion, int stock){
+        this.isbn = isbn;
+        this.titulo = titulo;
+        this.editorial = editorial;
+        this.autor = autor;
+        this.anoPubicacion = anoPubicacion;
+        this.stock = stock;
+    }
+
     private static final String URL = "jdbc:sqlite:Libreria.db";
 
     public static void listarLibros(){
@@ -90,6 +104,8 @@ public class Libros {
             System.out.println("Error al agregar el Libro: " + e.getMessage());
         }
     }
+
+
     public static void eliminarLibro(int resISBN ){
         PreparedStatement st = null;
         Connection con = null;
@@ -153,6 +169,54 @@ public class Libros {
 
             }catch (SQLException ex) {
                 System.out.println("Error al cerrar la conexion");
+            }
+        }
+    }
+
+    public static void actualizarLibro() {
+
+        Connection con = null;
+        PreparedStatement st = null;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Escribe el ISBN del libro a cambiar el titulo: ");
+        String ISBN = scanner.nextLine();
+        System.out.print("Escribe el nuevo Titulo: ");
+        String Titulo = scanner.nextLine();
+
+        String sql = "UPDATE Libros SET Titulo = ? WHERE ISBN = ?";
+
+        try {
+            con = DriverManager.getConnection(sql);
+            st = con.prepareStatement(sql);
+
+            st.setString(1, Titulo);
+            st.setString(2, ISBN);
+            int filasActualizadas = st.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                System.out.println("Libro actualizado.");
+            } else {
+                System.out.println("No se encontro ISBN.");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } finally {
+            try {
+                if (st != null && !st.isClosed()) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar el Statement");
+            }
+
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cenrrar la conexion");
             }
         }
     }

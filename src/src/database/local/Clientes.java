@@ -4,6 +4,22 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Clientes {
+    private String DNI;
+    private String Nombre;
+    private String Apellidos;
+    private int CP;
+    private int Edad;
+    private int LIbrosComprado;
+
+    public Clientes(String DNI, String Nombre, String Apellidos, int CP, int Edad, int LIbrosComprado){
+        this.DNI = DNI;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.CP = CP;
+        this.Edad = Edad;
+        this.LIbrosComprado = LIbrosComprado;
+    }
+
     private static final String URL = "jdbc:sqlite:Libreria.db";
 
     public static void crearClientes(){
@@ -119,5 +135,84 @@ public class Clientes {
             }
         }
     }
+    public static void eliminarCliente(String resCli){
+        PreparedStatement st = null;
+        Connection con = null;
+        String sql = "DELETE FROM Clientes WHERE DNI = " + resCli;
 
+        try {
+            con = DriverManager.getConnection(URL);
+            st = con.prepareStatement(sql);
+            st.executeUpdate();
+
+        }catch (SQLException ex){
+            System.out.println("Error "+ ex.getMessage());
+
+        }finally {
+            try {
+                if (st != null && !st.isClosed()){
+                    st.close();
+                }
+
+            }catch (SQLException ex) {
+                System.out.println("Error al cerrar el Statement");
+            }
+
+            try {
+                if (con != null && !con.isClosed()){
+                    con.close();
+                }
+
+            }catch (SQLException ex) {
+                System.out.println("Error al cerrar la conexion");
+            }
+        }
+    }
+    public static void actualizarCliente() {
+
+        Connection con = null;
+        PreparedStatement st = null;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Escribe el DNI el cliente para cambierle la edad: ");
+        String resDNI = scanner.nextLine();
+        System.out.print("Introduce la nueva edad ");
+        int edad = scanner.nextInt();
+
+        String sql = "UPDATE Clientes SET Edad = ? WHERE DNI = ?";
+
+        try {
+            con = DriverManager.getConnection(sql);
+            st = con.prepareStatement(sql);
+
+            st.setInt(1, edad);
+            st.setString(2, resDNI);
+            int filasActualizadas = st.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                System.out.println("Cliente actualizado.");
+            } else {
+                System.out.println("No se encontro DNI.");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } finally {
+            try {
+                if (st != null && !st.isClosed()) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar el Statement");
+            }
+
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cenrrar la conexion");
+            }
+        }
+    }
 }
