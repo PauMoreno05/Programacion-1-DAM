@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.StringTokenizer;
 
 public class Interfaz {
     public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class Interfaz {
         JButton gesCom = new JButton("Gestion de Compras");
         GridLayout panel0 = new GridLayout(1, 3);
 
-        mainMenu.setSize(300, 300);
+        mainMenu.setSize(800, 300);
         mainMenu.setResizable(true);
         mainMenu.setVisible(true);
         mainMenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -37,7 +38,7 @@ public class Interfaz {
                 GridLayout panel1 = new GridLayout(1, 5);
                 JButton salir = new JButton("Salir");
 
-                venLibMain.setSize(300, 300);
+                venLibMain.setSize(800, 300);
                 venLibMain.setResizable(true);
                 venLibMain.setLocationRelativeTo(mainMenu);
                 venLibMain.setVisible(true);
@@ -48,6 +49,7 @@ public class Interfaz {
                 venLibMain.add(eliminarLib);
                 venLibMain.add(salir);
                 salir.setBackground(new Color(110, 31, 14));
+                salir.setForeground(Color.white);
 
                 listarLib.addActionListener(new ActionListener() {
                     @Override
@@ -57,10 +59,10 @@ public class Interfaz {
                     }
                 });
 
+                //Añadir libro
                 agregarLib.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //Añadir libro
                         venLibMain.setVisible(false);
 
                         JFrame agregarLibro = new JFrame("Agregar libro a la base de datos");
@@ -74,7 +76,7 @@ public class Interfaz {
                         JButton salir = new JButton("Salir");
                         JButton enviar = new JButton("Enviar");
 
-                        agregarLibro.setSize(300, 300);
+                        agregarLibro.setSize(800, 300);
                         agregarLibro.setResizable(true);
                         agregarLibro.setLocationRelativeTo(venLibMain);
                         agregarLibro.setVisible(true);
@@ -85,14 +87,123 @@ public class Interfaz {
                         agregarLibro.add(editorial);
                         agregarLibro.add(anoPub);
                         agregarLibro.add(stock);
+                        agregarLibro.add(enviar);
                         agregarLibro.add(salir);
                         salir.setBackground(new Color(110, 31, 14));
+                        salir.setForeground(Color.white);
+                        enviar.setBackground(new Color(37, 82, 19));
+                        enviar.setForeground(Color.white);
+
+                        enviar.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                String resISBN = isbn.getText();
+                                String resTitulo = titulo.getText();
+                                String resAutor = autor.getText();
+                                String resEditorial = editorial.getText();
+                                int resAno = Integer.parseInt(anoPub.getText());
+                                int resStock = Integer.parseInt(stock.getText());
+                                Libros.agregarLibro(resISBN, resTitulo, resAutor, resEditorial, resAno, resStock);
+                            }
+                        });
 
                         salir.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 agregarLibro.setVisible(false);
                                 venLibMain.setVisible(true);
+
+                            }
+                        });
+                    }
+                });
+
+                //Eliminar libros
+                eliminarLib.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        venLibMain.setVisible(false);
+
+                        JFrame eliminarLibro = new JFrame("Eliminar Libro");
+                        GridLayout panel12 = new GridLayout(3, 1);
+                        JTextField isbn = new JTextField("Introduce el ISBN del libro que deseas eliminar",50);
+                        JButton salir = new JButton("Salir");
+                        JButton eliminar = new JButton("Eliminar");
+
+                        eliminarLibro.setSize(800, 300);
+                        eliminarLibro.setResizable(true);
+                        eliminarLibro.setLocationRelativeTo(venLibMain);
+                        eliminarLibro.setLayout(panel12);
+                        eliminarLibro.add(isbn);
+                        eliminarLibro.add(eliminar);
+                        eliminarLibro.add(salir);
+                        salir.setBackground(new Color(110, 31, 14));
+                        salir.setForeground(Color.white);
+                        eliminar.setBackground(new Color(37, 82, 19));
+                        eliminar.setForeground(Color.white);
+                        eliminarLibro.setVisible(true);
+
+                        eliminar.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                String resISBN = isbn.getText();
+                                Libros.eliminarLibro(resISBN);
+                            }
+                        });
+
+                        salir.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                eliminarLibro.setVisible(false);
+                                venLibMain.setVisible(true);
+
+                            }
+                        });
+                    }
+                });
+
+                //Actualizar Libro
+                cambiarLib.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        venLibMain.setVisible(false);
+
+                        JFrame cambiarLibro = new JFrame("Eliminar Libro");
+                        GridLayout panel12 = new GridLayout(4, 1);
+                        JTextField isbn = new JTextField("Introduce el ISBN del libro que deseas cambiar el titulo",50);
+                        JTextField titulo = new JTextField("Escribe el nuevo titulo de la pelicula",50);
+                        JButton salir = new JButton("Salir");
+                        JButton actualizar = new JButton("Actualizar");
+
+                        cambiarLibro.setSize(800, 300);
+                        cambiarLibro.setResizable(true);
+                        cambiarLibro.setLocationRelativeTo(venLibMain);
+                        cambiarLibro.setLayout(panel12);
+                        cambiarLibro.add(isbn);
+                        cambiarLibro.add(titulo);
+                        cambiarLibro.add(actualizar);
+                        cambiarLibro.add(salir);
+                        salir.setBackground(new Color(110, 31, 14));
+                        salir.setForeground(Color.white);
+                        actualizar.setBackground(new Color(37, 82, 19));
+                        actualizar.setForeground(Color.white);
+                        cambiarLibro.setVisible(true);
+
+                        actualizar.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                String resISBN = isbn.getText();
+                                String resTitulo = titulo.getText();
+                                Libros.actualizarLibro(resISBN, resTitulo);
+                            }
+                        });
+
+                        salir.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                cambiarLibro.setVisible(false);
+                                venLibMain.setVisible(true);
+
                             }
                         });
                     }
@@ -123,7 +234,7 @@ public class Interfaz {
                 GridLayout panel2 = new GridLayout(1, 5);
                 JButton salir = new JButton("Salir");
 
-                venCliMain.setSize(300, 300);
+                venCliMain.setSize(800, 300);
                 venCliMain.setResizable(true);
                 venCliMain.setLocationRelativeTo(mainMenu);
                 venCliMain.setVisible(true);
@@ -134,6 +245,7 @@ public class Interfaz {
                 venCliMain.add(eliminarCli);
                 venCliMain.add(salir);
                 salir.setBackground(new Color(110, 31, 14));
+                salir.setForeground(Color.white);
 
                 salir.addActionListener(new ActionListener() {
                     @Override
@@ -162,7 +274,7 @@ public class Interfaz {
                 GridLayout panel3 = new GridLayout(1, 5);
                 JButton salir = new JButton("Salir");
 
-                venComMain.setSize(300, 300);
+                venComMain.setSize(800, 300);
                 venComMain.setResizable(true);
                 venComMain.setLocationRelativeTo(mainMenu);
                 venComMain.setVisible(true);
@@ -173,6 +285,7 @@ public class Interfaz {
                 venComMain.add(eliminarCom);
                 venComMain.add(salir);
                 salir.setBackground(new Color(110, 31, 14));
+                salir.setForeground(Color.white);
 
                 salir.addActionListener(new ActionListener() {
                     @Override

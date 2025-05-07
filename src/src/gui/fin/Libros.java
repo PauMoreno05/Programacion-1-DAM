@@ -68,25 +68,13 @@ public class Libros {
         }
     }
 
-    public static void agregarLibro(Scanner scanner){
-        System.out.print("Ingrese ISBN: ");
-        String isbn = scanner.next();
-        scanner.nextLine();
-
-        System.out.print("Ingrese título: ");
-        String titulo = scanner.nextLine();
-
-        System.out.print("Ingrese autor: ");
-        String autor = scanner.nextLine();
-
-        System.out.print("Ingrese editorial: ");
-        String editorial = scanner.nextLine();
-
-        System.out.print("Ingrese año de publicación: ");
-        int anoPublicacion = scanner.nextInt();
-
-        System.out.print("Ingrese stock: ");
-        int stock = scanner.nextInt();
+    public static void agregarLibro(String resISBN, String resTitulo, String resAutor, String resEditorial, int resAno, int resStock){
+        String isbn = resISBN;
+        String titulo = resTitulo;
+        String autor = resAutor;
+        String editorial = resEditorial;
+        int anoPublicacion = resAno;
+        int stock = resStock;
 
         String sql = "INSERT INTO Libros (ISBN, Titulo, Autor, Editorial, AñoPublicacion, Stock) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -106,7 +94,7 @@ public class Libros {
     }
 
 
-    public static void eliminarLibro(int resISBN ){
+    public static void eliminarLibro(String resISBN){
         PreparedStatement st = null;
         Connection con = null;
         String sql = "DELETE FROM Libros WHERE ISBN = " + resISBN;
@@ -173,18 +161,15 @@ public class Libros {
         }
     }
 
-    public static void actualizarLibro() {
+    public static void actualizarLibro(String resISBN, String resTitulo) {
 
         Connection con = null;
         PreparedStatement st = null;
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Escribe el ISBN del libro a cambiar el titulo: ");
-        String ISBN = scanner.nextLine();
-        System.out.print("Escribe el nuevo Titulo: ");
-        String Titulo = scanner.nextLine();
+        String ISBN = resISBN;
+        String Titulo = resTitulo;
 
-        String sql = "UPDATE Libros SET Titulo = ? WHERE ISBN = ?";
+        String sql = "UPDATE Libros SET Titulo = ? WHERE ISBN = ?;";
 
         try {
             con = DriverManager.getConnection(sql);
