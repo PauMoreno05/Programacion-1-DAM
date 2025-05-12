@@ -67,7 +67,7 @@
 //                                    break;
 //                                case 2:
 //                                    System.out.println("Agrega Libro:");
-//                                    Libros.agregarLibro(scanner);
+////                                    Libros.agregarLibro(scanner);
 //                                    break;
 //                                case 3:
 //                                    System.out.println("Cabiar datos del titulo de un libro:");
@@ -77,7 +77,7 @@
 //                                    System.out.println("Eliminar articulo");
 //                                    System.out.println("Introduce el isbn del libro que deseas eliminar");
 //                                    int resISBN = scanner.nextInt();
-//                                    Libros.eliminarLibro(resISBN);
+////                                    Libros.eliminarLibro(resISBN);
 //                                    System.out.println("Libro eliminado correctamente");
 //                                    break;
 //                                case 0:

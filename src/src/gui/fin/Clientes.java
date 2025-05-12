@@ -54,10 +54,8 @@ public class Clientes {
             }
         }
     }
-    public static void agregarCliente(Scanner scanner){
-        System.out.print("Ingrese DNI: ");
-        String dni = scanner.next();
-        scanner.nextLine();
+    public static void agregarCliente(String resDNI, String resNombre, String resApellidos, int resCP, int resEdad, int resCompras){
+        String dni = resDNI;
 
         System.out.print("Ingrese Nombre: ");
         String nombre = scanner.nextLine();

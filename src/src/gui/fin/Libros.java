@@ -163,7 +163,7 @@ public class Libros {
 
     public static void actualizarLibro(String resISBN, String resTitulo) {
 
-        Connection con = null;
+        Connection con = null ;
         PreparedStatement st = null;
 
         String ISBN = resISBN;
@@ -172,7 +172,7 @@ public class Libros {
         String sql = "UPDATE Libros SET Titulo = ? WHERE ISBN = ?;";
 
         try {
-            con = DriverManager.getConnection(sql);
+            con = DriverManager.getConnection(URL);
             st = con.prepareStatement(sql);
 
             st.setString(1, Titulo);
